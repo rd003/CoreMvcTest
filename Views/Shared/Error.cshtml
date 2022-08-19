@@ -1,0 +1,33 @@
+﻿@model int
+@{
+    Layout = "~/Views/Shared/_layout.cshtml";
+    int statusCode = @Model;
+    string statusMessage = string.Empty;
+    switch (statusCode)
+    {
+        case 400:
+            statusMessage = CoreMvcTest.Properties.Resources.BadRequestTheRequestCannotBeFulfilledDueToBadSyntax;
+            break;
+        case 403:
+            statusMessage = CoreMvcTest.Properties.Resources.Forbidden;
+            break;
+        case 404:
+            statusMessage = CoreMvcTest.Properties.Resources.PageNotFound;
+            break;
+        case 408:
+            statusMessage = CoreMvcTest.Properties.Resources.TheServerTimedOutWaitingForTheRequest;
+            break;
+        case 500:
+            statusMessage = CoreMvcTest.Properties.Resources.InternalServerErrorServerWasUnableToFinishProcessingTheRequest;
+            break;
+        default:
+            statusMessage = CoreMvcTest.Properties.Resources.ThatsOddSomethingWeDidntExpectHappened;
+            break;
+    }
+}
+
+<h3>@Model</h3>
+<p>
+    
+    @statusMessage
+</p>

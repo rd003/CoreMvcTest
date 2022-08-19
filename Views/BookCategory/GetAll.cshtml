@@ -1,0 +1,42 @@
+﻿@model IEnumerable<CoreMvcTest.Models.BookCategory>
+@{
+    ViewData["Title"] = "GetAll";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div style="width:60%;margin:auto">
+    <h3>
+        Book Categories
+    </h3>
+    <div class="row r">
+        <div class="col-md-12">
+            <a class="btn btn-primary" asp-controller="BookCategory" asp-action="Add">Add More</a>
+        </div>
+    </div>
+
+    <div class="row r">
+        <div class="col-md-12">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach(var item in Model)
+                    {
+                        <tr>
+                            <td>@item.CategoryName</td>
+                            <td>
+                                <a href="/BookCategory/Edit?id=@item.Id" class="btn btn-primary">Edit</a> | 
+                                <a href="/BookCategory/Delete?id=@item.Id" class="btn btn-danger" onclick="return window.confirm('are you sure??')">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

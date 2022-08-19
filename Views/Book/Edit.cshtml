@@ -1,0 +1,92 @@
+﻿@model CoreMvcTest.Models.Book
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form asp-controller="Book" asp-action="Edit">
+    <input type="hidden" asp-for="Id" class="form-control" />
+
+    <div style="width:50%;margin:auto">
+        <h3>Edit Book Category</h3>
+        <div class="row r">
+            <div class="col-md-12">
+                <a class="btn btn-primary" asp-controller="Book" asp-action="GetAll">All records</a>
+            </div>
+        </div>
+        <div class="row r">
+            <div class="col-md-4">
+                Book Name *
+            </div>
+
+            <div class="col-md-8">
+                <input type="text" asp-for="BookName" class="form-control" />
+                <span class="text-danger" asp-validation-for="BookName">
+                </span>
+            </div>
+        </div>
+
+        <div class="row r">
+            <div class="col-md-4">
+                Category Name *
+            </div>
+
+            <div class="col-md-8">
+                <select asp-for="BookCategory_Id" asp-items="@Model.BookCategoryList" class="form-control">
+                    <option value="">--Select--</option>
+                </select>
+                <span class="text-danger" asp-validation-for="BookCategory_Id">
+                </span>
+            </div>
+        </div>
+
+        <div class="row r">
+            <div class="col-md-4">
+                Author Name *
+            </div>
+
+            <div class="col-md-8">
+                <input type="text" asp-for="AuthorName" class="form-control" />
+                <span class="text-danger" asp-validation-for="AuthorName">
+                </span>
+            </div>
+        </div>
+
+        <div class="row r">
+            <div class="col-md-4">
+                Pubhliser Name *
+            </div>
+
+            <div class="col-md-8">
+                <input type="text" asp-for="PublisherName" class="form-control" />
+                <span class="text-danger" asp-validation-for="PublisherName">
+                </span>
+            </div>
+        </div>
+
+        <div class="row r">
+            <div class="col-md-4">
+                Published Date *
+            </div>
+
+            <div class="col-md-8">
+                <input type="date" asp-for="PublishDate" class="form-control" />
+                <span class="text-danger" asp-validation-for="PublishDate">
+                </span>
+            </div>
+        </div>
+
+
+        <div class="row r">
+            <div class="col-md-12">
+                @(ViewBag.msg)
+            </div>
+        </div>
+
+        <div class="row r">
+            <div class="col-md-12">
+                <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+        </div>
+    </div>
+</form>
+

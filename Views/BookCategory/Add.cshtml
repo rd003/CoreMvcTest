@@ -1,0 +1,44 @@
+﻿@model CoreMvcTest.Models.BookCategory
+@{
+    ViewData["Title"] = "GetAll";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form asp-controller="BookCategory" asp-action="Post">
+    <h3>Add Book Category</h3>
+
+    <div style="width:50%;margin:auto">
+        <div class="row r">
+            <div class="col-md-12">
+                <a class="btn btn-primary" asp-controller="BookCategory" asp-action="GetAll">All records</a>
+            </div>
+        </div>
+        <div class="row r">
+            <div class="col-md-4">
+                Category Name*
+            </div>
+
+            <div class="col-md-8">
+                <input type="text" asp-for="CategoryName" class="form-control" />
+                <span class="text-danger" asp-validation-for="CategoryName">
+                </span>
+            </div>
+        </div>
+
+        @if (TempData["msg"] != null)
+        {
+            <div class="row r">
+                <div class="col-md-12">
+                  @TempData["msg"]
+                </div>
+            </div>
+        }
+
+        <div class="row r">
+            <div class="col-md-12">
+                <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+        </div>
+    </div>
+</form>
+

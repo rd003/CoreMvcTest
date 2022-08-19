@@ -1,0 +1,75 @@
+﻿@model CoreMvcTest.Models.BookPurchase
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form asp-controller="BookPurchase" asp-action="Edit">
+    <input type="hidden" asp-for="Id" />
+    <div style="width:50%;margin:auto">
+        <h3>Update Book Purchase</h3>
+        <div class="row r">
+            <div class="col-md-12">
+                <a class="btn btn-primary" asp-controller="BookPurchase" asp-action="GetAll">All records</a>
+            </div>
+        </div>
+        <div class="row r">
+            <div class="col-md-4">
+                Book *
+            </div>
+
+            <div class="col-md-8">
+                <select type="text" asp-items="@Model.BookList" class="form-control" asp-for="Book_Id">
+                    <option value="">--select book--</option>
+                </select>
+                <span asp-validation-for="Book_Id" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="row r">
+            <div class="col-md-4">
+                Customer Name *
+            </div>
+
+            <div class="col-md-8">
+                <input type="text" class="form-control" asp-for="CustomerName" />
+                <span class="text-danger" asp-validation-for="CustomerName"></span>
+            </div>
+        </div>
+
+        <div class="row r">
+            <div class="col-md-4">
+                MobileNumber *
+            </div>
+
+            <div class="col-md-8">
+                <input type="text" class="form-control" asp-for="MobileNumber" />
+                <span class="text-danger" asp-validation-for="MobileNumber"></span>
+            </div>
+        </div>
+
+        <div class="row r">
+            <div class="col-md-4">
+                Purchase Date *
+            </div>
+
+            <div class="col-md-8">
+                <input type="date" asp-for="PurchaseDate" asp-format="{0:yyyy-MM-dd}" class="form-control" />
+            </div>
+        </div>
+
+
+        @if (TempData["msg"] != null)
+        {
+            <div class="col-md-12">
+                @TempData["msg"]
+            </div>
+        }
+
+        <div class="row r">
+            <div class="col-md-12">
+                <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+        </div>
+    </div>
+</form>
+

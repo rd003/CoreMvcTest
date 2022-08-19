@@ -1,0 +1,47 @@
+﻿@model IEnumerable<CoreMvcTest.Models.BookPurchase>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div style="width:70%;margin:auto">
+    <h3>Book Purchase History </h3>
+    <div class="row r">
+        <div class="col-md-12">
+            <a class="btn btn-primary" asp-controller="BookPurchase" asp-action="Add">Add More</a>
+        </div>
+    </div>
+
+    <div class="row r">
+        <div class="col-md-12">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Book</th>
+                        <th>AuthorAndPublisher</th>
+                        <th>CustomerName</th>
+                        <th>Moblie</th>
+                        <th>Purchased At</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach(var item in Model)
+                    {
+                    <tr>
+                        <td>@item.BookName</td>
+                        <td>@item.AuthorAndPublisher</td>
+                        <td>@item.CustomerName</td>
+                        <td>@item.MobileNumber</td>
+                        <td>@item.PurchaseDate.ToString("dd-MM-yyyy")</td>
+                        <td>
+                            <a href="/BookPurchase/Edit?id=@item.Id" class="btn btn-success">Edit</a> |
+                            <a href="/BookPurchase/Delete?id=@item.Id" class="btn btn-danger" onclick="return window.confirm('are you sure??')">Delete</a>
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

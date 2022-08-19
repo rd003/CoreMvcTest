@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - CoreMvcTest</title>
+    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <style>
+        .r{
+            margin-top:3px !important;
+        }
+        #container{
+            width:90%;margin:auto;
+        }
+    </style>
+</head>
+<body>
+  
+    <div id="container">
+            <div>
+                <ul>
+                    <li>
+                        <a href="/BookCategory/GetAll">BookCategories</a>
+                        | <a href="/Book/GetAll">Books</a>
+                        | <a href="/BookPurchase/GetAll">Book Purchase</a>
+                    </li>
+                </ul>
+            </div>
+            <hr/>
+            @RenderBody()
+   </div>
+</body>
+</html>
